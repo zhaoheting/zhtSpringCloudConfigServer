@@ -1,0 +1,67 @@
+//Build script(Create for the other script).构建脚本（给脚本用的脚本）
+buildscript {
+    //存储一个属于gradle的变量，整个工程都能用，可通过gradle.ext.springBootVersion使用
+    ext {
+        set('springCloudVersion', "Finchley.SR3")
+        set('springBootVersion', '2.0.2.RELEASE')
+    }
+
+    /*配置仓库地址，从而找到外部依赖
+    按照你在文件中(build.gradle)仓库的顺序寻找所需依赖(如jar文件)，
+    如果在某个仓库中找到了，那么将不再其它仓库中寻找
+    */
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        //Local repository(${user.home}/.m2/repository)
+        mavenCentral()
+    }
+
+    dependencies {
+        // "classpath" clarification means the classLoader can use these dependencies when running other scripts.
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+// You have to add version info if you want to add plugins as below.
+//plugins {
+//    id 'org.springframework.boot' version '2.1.7.RELEASE'
+//    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+//    id 'java'
+//    id 'war'
+//}
+
+//Why it's unnecessary to add the version info? What's the default version?
+apply plugin:'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+// Define the repositories for the application dependencies.
+repositories {
+    maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    maven{url 'https://mvnrepository.com/'}
+    mavenCentral()
+}
+
+//All the dependencies that are necessary for the application.
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-config-server'
+    implementation 'org.springframework.cloud:spring-cloud-starter'
+    implementation  'org.springframework.boot:spring-boot-starter'
+    implementation'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+//Manage the version of all the spring boot and cloud dependencies.
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+//Set the name of the file created by the war task.
+war.archiveName "config.war"

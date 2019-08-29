@@ -11,5 +11,4 @@ public class ZhtSpringCloudConfigServerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ZhtSpringCloudConfigServerApplication.class, args);
 	}
-
 }

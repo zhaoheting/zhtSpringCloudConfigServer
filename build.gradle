@@ -52,9 +52,6 @@ dependencies {
     compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
     compile('org.springframework.boot:spring-boot-starter-jdbc')
     compile(files("C:\\Users\\heting.zhao\\Desktop\\springbootconfig\\ojdbc7.jar"))
-    implementation 'org.springframework.cloud:spring-cloud-starter'
-    implementation  'org.springframework.boot:spring-boot-starter'
-    implementation'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

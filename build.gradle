@@ -30,7 +30,7 @@ buildscript {
 //}
 
 //Why it's unnecessary to add the version info? What's the default version?
-apply plugin:'java'
+apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'war'
@@ -41,8 +41,8 @@ sourceCompatibility = '1.8'
 
 // Define the repositories for the application dependencies.
 repositories {
-    maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
-    maven{url 'https://mvnrepository.com/'}
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'https://mvnrepository.com/' }
     mavenCentral()
 }
 
@@ -51,7 +51,7 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-config-server'
     compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
     compile('org.springframework.boot:spring-boot-starter-jdbc')
-    compile(files("C:\\Users\\heting.zhao\\Desktop\\springbootconfig\\ojdbc7.jar"))
+////    compile(files("/Users/zhao/Downloads/ojdbc7.jar"))
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

@@ -50,6 +50,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.cloud:spring-cloud-config-server'//Include 'spring-boot-starter-web'
     compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
 }
 
 //Manage the version of all the spring boot and cloud dependencies.
